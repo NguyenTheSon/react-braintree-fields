@@ -1,6 +1,7 @@
 import Braintree from 'braintree-web/client'
 import HostedFields from 'braintree-web/hosted-fields'
 import BraintreeDataCollector from 'braintree-web/data-collector'
+import BraintreeThreeDSecure from 'braintree-web/three-d-secure';
 
 function cap(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -42,6 +43,13 @@ export default class BraintreeClientApi {
                     this.onError(err)
                 } else {
                     this.create(clientInstance, onAuthorizationSuccess)
+
+                    if (this.wrapperHandlers.threeDSecure) {
+                      BraintreeThreeDSecure.create({
+                        version: 2, // Will use 3DS2 whenever possible
+                        client: clientInstance
+                      }, this.wrapperHandlers.threeDSecure);
+                    }
 
                     if (this.wrapperHandlers.onDataCollectorInstanceReady) {
                         BraintreeDataCollector.create({
