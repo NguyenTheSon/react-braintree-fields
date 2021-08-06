@@ -97,6 +97,7 @@
             this.create(clientInstance, onAuthorizationSuccess);
 
             if (this.wrapperHandlers.threeDSecure) {
+              console.log("BraintreeThreeDSecure", BraintreeThreeDSecure__default['default'], clientInstance);
               BraintreeThreeDSecure__default['default'].create({
                 version: 2,
                 // Will use 3DS2 whenever possible

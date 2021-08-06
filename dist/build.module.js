@@ -89,6 +89,7 @@ class BraintreeClientApi {
           this.create(clientInstance, onAuthorizationSuccess);
 
           if (this.wrapperHandlers.threeDSecure) {
+            console.log("BraintreeThreeDSecure", BraintreeThreeDSecure, clientInstance);
             BraintreeThreeDSecure.create({
               version: 2,
               // Will use 3DS2 whenever possible
