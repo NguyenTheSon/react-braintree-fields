@@ -99,7 +99,7 @@
             if (this.wrapperHandlers.threeDSecure) {
               console.log("BraintreeThreeDSecure", BraintreeThreeDSecure__default['default'], clientInstance);
               BraintreeThreeDSecure__default['default'].create({
-                version: 2,
+                version: this.wrapperHandlers.threeDSecureVersion || 2,
                 // Will use 3DS2 whenever possible
                 client: clientInstance
               }, this.wrapperHandlers.threeDSecure);

@@ -47,7 +47,7 @@ export default class BraintreeClientApi {
                     if (this.wrapperHandlers.threeDSecure) {
                       console.log("BraintreeThreeDSecure", BraintreeThreeDSecure, clientInstance)
                       BraintreeThreeDSecure.create({
-                        version: 2, // Will use 3DS2 whenever possible
+                        version: this.wrapperHandlers.threeDSecureVersion || 2, // Will use 3DS2 whenever possible
                         client: clientInstance
                       }, this.wrapperHandlers.threeDSecure);
                     }
